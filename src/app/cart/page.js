@@ -22,7 +22,7 @@ export default function Cart() {
   // Fetch products from backend
   async function fetchProducts() {
     try {
-      const response = await fetch("http://localhost:4000/posts/");
+      const response = await fetch("https://ecommerce-fullstack-backend-six.vercel.app/posts/");
       let data = await response.json();
       setProducts(data);
     } catch (error) {

@@ -15,7 +15,7 @@ export default function LoginPage() {
     setErrorMsg('');
 
     try {
-      const response = await fetch('http://localhost:4000/log-in', {
+      const response = await fetch('https://ecommerce-fullstack-backend-six.vercel.app/log-in', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

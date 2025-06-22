@@ -28,7 +28,7 @@ export default function RealPage() {
 
  async function fetchproducts() {
     try {
-      const response = await fetch("http://localhost:4000/posts/");
+      const response = await fetch("https://ecommerce-fullstack-backend-six.vercel.app/posts/");
       let data = await response.json();
    
      changeProducts(data)

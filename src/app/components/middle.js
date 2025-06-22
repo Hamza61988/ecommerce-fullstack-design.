@@ -53,7 +53,7 @@ const [endTime, setEndTime] = useState(null);
 
   async function fetchDeals() {
     try {
-      const response = await fetch("http://localhost:4000/posts/Deals");
+      const response = await fetch("https://ecommerce-fullstack-backend-six.vercel.app/posts/Deals");
       let data = await response.json();
      console.log(data)
      setdeals(data)
@@ -65,7 +65,7 @@ const [endTime, setEndTime] = useState(null);
   
   async function fetchHome1() {
     try {
-      const response = await fetch("http://localhost:4000/posts/home1");
+      const response = await fetch("https://ecommerce-fullstack-backend-six.vercel.app/posts/home1");
       let data = await response.json();
    
      setHome1(data)
@@ -77,7 +77,7 @@ const [endTime, setEndTime] = useState(null);
   
   async function fetchHome2() {
     try {
-      const response = await fetch("http://localhost:4000/posts/home2");
+      const response = await fetch("https://ecommerce-fullstack-backend-six.vercel.app/posts/home2");
       let data = await response.json();
     
      setHome2(data)

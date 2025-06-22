@@ -36,7 +36,7 @@ export default function Navbar({ onToggleSidebar }) {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const res = await fetch('http://localhost:4000/posts');
+        const res = await fetch('https://ecommerce-fullstack-backend-six.vercel.app/posts');
         const data = await res.json();
         setAllPosts(data);
       } catch (err) {

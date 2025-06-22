@@ -16,7 +16,7 @@ export default function useAuthRedirect() {
       }
 
       try {
-        const res = await fetch('http://localhost:4000/protected', {
+        const res = await fetch('https://ecommerce-fullstack-backend-six.vercel.app/protected', {
           headers: {
             Authorization: `Bearer ${token}`,
           },

@@ -7,7 +7,7 @@ export default function Middledown() {
 
    async function fetchHome1() {
     try {
-      const response = await fetch("http://localhost:4000/posts");
+      const response = await fetch("https://ecommerce-fullstack-backend-six.vercel.app/posts");
       let data = await response.json();
    
      setsection4(data)

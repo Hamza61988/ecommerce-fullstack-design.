@@ -32,7 +32,7 @@ export default function RegisterPage() {
     }
 
     try {
-      const res = await fetch('http://localhost:4000/sign-in', {
+      const res = await fetch('https://ecommerce-fullstack-backend-six.vercel.app/sign-in', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),

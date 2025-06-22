@@ -32,7 +32,7 @@ const InputForm = () => {
 
   const fetchData = async () => {
     try {
-      const response = await fetch("http://localhost:4000/posts");
+      const response = await fetch("https://ecommerce-fullstack-backend-six.vercel.app/posts");
       const data = await response.json();
       setContent(data);
     } catch (error) {
@@ -79,7 +79,7 @@ const InputForm = () => {
     }
 
     try {
-      const response = await fetch("http://localhost:4000/post", {
+      const response = await fetch("https://ecommerce-fullstack-backend-six.vercel.app/post", {
         method: "POST",
         body: data,
       });
@@ -101,7 +101,7 @@ const InputForm = () => {
 
   const handleDelete = async (id) => {
     try {
-      await fetch(`http://localhost:4000/post/${id}`, {
+      await fetch(`https://ecommerce-fullstack-backend-six.vercel.app/post/${id}`, {
         method: "DELETE",
       });
       fetchData();

@@ -41,7 +41,7 @@ useEffect(() => {
   useEffect(() => {
     async function fetchRelated() {
       try {
-        const res = await fetch('http://localhost:4000/posts');
+        const res = await fetch('https://ecommerce-fullstack-backend-six.vercel.app/posts');
         const data = await res.json();
         setRelatedProducts(data.slice(5, 9));
       } catch (err) {
@@ -55,7 +55,7 @@ useEffect(() => {
     if (!id) return;
     async function fetchProduct() {
       try {
-        const res = await fetch(`http://localhost:4000/post/${id}`);
+        const res = await fetch(`https://ecommerce-fullstack-backend-six.vercel.app/post/${id}`);
         if (!res.ok) throw new Error('Product not found');
         const data = await res.json();
         setProduct(data);
