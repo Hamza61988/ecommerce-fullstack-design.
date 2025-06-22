@@ -1,17 +1,17 @@
-
+import Navbar from "../components/Navbar";
 
 export const metadata = {
-  title: "List View",
+  title: "Sign-in",
   description: "Example list view page",
 };
 
 export default function Layout({ children }) {
   return (
-    <div className="">
-       
+    <div>
+      
   
     
-      <main className="  ">{children}</main>
+      <main className="flex-1 ">{children}</main>
     
     </div>
   );

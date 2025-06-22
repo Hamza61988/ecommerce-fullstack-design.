@@ -1,7 +1,25 @@
+import { useEffect, useState } from "react";
 import { FaSearch, FaBox, FaArrowRight, FaShieldAlt } from "react-icons/fa";
-
+import Link from "next/link";
 export default function Middledown() {
   
+  const [section4 , setsection4] = useState([])
+
+   async function fetchHome1() {
+    try {
+      const response = await fetch("http://localhost:4000/posts");
+      let data = await response.json();
+   
+     setsection4(data)
+    } catch (error) {
+      console.error("Failed to fetch:", error);
+    }
+  }
+
+  useEffect(()=>{},[
+     fetchHome1()
+  ])
+
 
    let countries = [
   {
@@ -58,72 +76,7 @@ export default function Middledown() {
 ];
 
 
-  let section4 = [
-  {
-    image: "section4 (1).png",
-    price: "$199",
-    title: "Wireless Headphones",
-    description: "Noise-cancelling over-ear Bluetooth headphones with 20hr battery life"
-  },
-  {
-    image: "section4 (2).png",
-    price: "$49",
-    title: "Smart Watch",
-    description: "Fitness tracker with heart rate monitor and waterproof design"
-  },
-  {
-    image: "section4 (3).png",
-    price: "$299",
-    title: "Portable Speaker",
-    description: "High-fidelity audio with deep bass and 12-hour playtime"
-  },
-  {
-    image: "section4 (4).png",
-    price: "$89",
-    title: "Gaming Mouse",
-    description: "Ergonomic design with RGB lighting and adjustable DPI"
-  },
-  {
-    image: "section4 (5).png",
-    price: "$159",
-    title: "4K Action Camera",
-    description: "Waterproof sports camera with 4K resolution and Wi-Fi support"
-  }
-  ,
-  {
-    image: "section4 (6).png",
-    price: "$159",
-    title: "4K Action Camera",
-    description: "Waterproof sports camera with 4K resolution and Wi-Fi support"
-  }
-  
-  ,
-  {
-    image: "section4 (8).png",
-    price: "$159",
-    title: "4K Action Camera",
-    description: "Waterproof sports camera with 4K resolution and Wi-Fi support"
-  },
-  {
-    image: "section4 (1).jpg",
-    price: "$159",
-    title: "4K Action Camera",
-    description: "Waterproof sports camera with 4K resolution and Wi-Fi support"
-  },
-  {
-    image: "section4 (9).png",
-    price: "$159",
-    title: "4K Action Camera",
-    description: "Waterproof sports camera with 4K resolution and Wi-Fi support"
-  }
-  ,
-  {
-    image: "section4 (7).png",
-    price: "$159",
-    title: "4K Action Camera",
-    description: "Waterproof sports camera with 4K resolution and Wi-Fi support"
-  }
-];
+ 
 
 
 const halfarray = [
@@ -222,18 +175,22 @@ const halfarray = [
       <div className="  md:text-2xl text-xl font-semibold my-6">
         Recommended items
       </div>
+<div className="md:grid grid grid-cols-2 md:grid-cols-5 gap-4">
+  {section4.slice(0, 10).map((e) => (
+    <Link href={`/product/${e.id}`} key={e.id}>
+      <div className="border border-gray-200 rounded-lg p-3 cursor-pointer shadow-sm hover:shadow-md transition flex flex-col items-center">
+        <img
+          className="h-[200px] w-[200px] object-contain mx-auto"
+          src={e.imageUrl}
+          alt={e.title}
+        />
+        <h3 className="mt-2">{e.name}</h3>
+        <h3>${e.price}</h3>
+        <h3 className="text-gray-400 font-medium">{e.title}</h3>
+<p className="text-gray-400 text-center text-sm truncate w-full">{e.description}</p>
 
-     <div className="md:grid grid  grid-cols-2 md:grid-cols-5 gap-4 ">
-  {section4.map((e, i) => (
-    <div
-      key={i}
-      className="border border-gray-200 rounded-lg p-3 cursor-pointer shadow-sm hover:shadow-md transition"
-    >
-      <img className="h-[200px] w-[200px] object-contain mx-auto" src={e.image} alt={e.title} />
-      <h3 className=" mt-2">{e.price}</h3>
-      <h3 className="text-gray-400 font-medium">{e.title}</h3>
-      <p className="text-gray-400 text-sm">{e.description}</p>
-    </div>
+      </div>
+    </Link>
   ))}
 </div>
 

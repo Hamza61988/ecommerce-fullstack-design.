@@ -1,10 +1,13 @@
 "use client"
+import Link from "next/link";
 import { useState, useEffect } from "react";
 
 
 export default function Middle() {
-
-
+const [deals, setdeals] = useState([]);
+const [Home1 , setHome1]  = useState([]);
+const [Home2 , setHome2]  = useState([]);
+const [endTime, setEndTime] = useState(null);
  const [timeLeft, setTimeLeft] = useState({
     days: 0,
     hours: 0,
@@ -12,9 +15,9 @@ export default function Middle() {
     seconds: 0,
   });
 
-  const [endTime, setEndTime] = useState(null);
+  
 
-  // Set the countdown end time on client only
+ 
   useEffect(() => {
     const targetTime = new Date().getTime() + 4 * 24 * 60 * 60 * 1000;
     setEndTime(targetTime);
@@ -46,33 +49,51 @@ export default function Middle() {
     return () => clearInterval(timer);
   }, [endTime]);
 
-  let array = [{image: "section1 (1).png" , name: "watch" ,   discount: "-45% " } , {image: "section1 (3).png" , name: "mobile" , discount: "-20% " } , {image: "section1 (4).png" , name: "laptop" , discount: "-10% " }  , {image: "section1 (5).png" , name: "camera" , discount: "-25% " }  , {image: "section1 (2).png" , name: "headphone" ,  discount: "-25% " }   ]
+ 
 
-let array2 = [
-  { image: "section2 (6).png", name: "Smart Watch", price: "$120" },
-  { image: "section2 (2).png", name: "Bluetooth Speaker", price: "$45" },
-  { image: "section2 (3).png", name: "Wireless Mouse", price: "$25" },
-  { image: "section2 (4).png", name: "Gaming Keyboard", price: "$80" },
-  { image: "section2 (5).png", name: "Portable Charger", price: "$30" },
-   { image: "section2 (1).png", name: "chair", price: "$40" },
-    { image: "section2 (7).png", name: "Portable Charger", price: "$30" },
-     { image: "section2 (8).jpg", name: "sofa", price: "$90" }, 
-];
+  async function fetchDeals() {
+    try {
+      const response = await fetch("http://localhost:4000/posts/Deals");
+      let data = await response.json();
+     console.log(data)
+     setdeals(data)
+    } catch (error) {
+      console.error("Failed to fetch:", error);
+    }
+  }
+
+  
+  async function fetchHome1() {
+    try {
+      const response = await fetch("http://localhost:4000/posts/home1");
+      let data = await response.json();
+   
+     setHome1(data)
+    } catch (error) {
+      console.error("Failed to fetch:", error);
+    }
+  }
+
+  
+  async function fetchHome2() {
+    try {
+      const response = await fetch("http://localhost:4000/posts/home2");
+      let data = await response.json();
+    
+     setHome2(data)
+    } catch (error) {
+      console.error("Failed to fetch:", error);
+    }
+  }
+  
+  
 
 
-let array3 = [
-  { image: "section3 (1).png", name: "Smart Watch", price: "$120" },
-  { image: "section3 (2).png", name: "Bluetooth Speaker", price: "$45" },
-  { image: "section3 (3).png", name: "Wireless Mouse", price: "$25" },
-  { image: "section3 (4).png", name: "Gaming Keyboard", price: "$80" },
-  { image: "section2 (5).png", name: "Portable Charger", price: "$30" },
-   { image: "section2 (1).png", name: "chair", price: "$40" },
-    { image: "section2 (7).png", name: "Portable Charger", price: "$30" },
-     { image: "section2 (8).jpg", name: "sofa", price: "$90" }, 
-];
-
-
-
+useEffect(() => {
+  fetchDeals();
+  fetchHome1();
+  fetchHome2();
+}, []);
 
 
 
@@ -114,24 +135,28 @@ let array3 = [
                   </span>  
 
 
-                 <div className="flex md:justify-between md:flex-row md:overflow-visible mt-10 md:items-center md:mt-0 gap-4 md:gap-5 pl-0 md:pl-4 overflow-x-auto whitespace-nowrap md:whitespace-normal w-auto md:w-full scrollbar-hide">
-  {array.map((e, i) => (
+
+<div className="flex md:justify-between md:flex-row md:overflow-visible mt-10 md:items-center md:mt-0 gap-4 md:gap-5 pl-0 md:pl-4 overflow-x-auto whitespace-nowrap md:whitespace-normal w-auto md:w-full scrollbar-hide">
+  {deals.map((e, i) => (
     <div
       key={i}
       className="flex-none flex flex-col items-center border w-[150px] min-w-[150px] h-auto transition bg-white hover:z-10 duration-200 hover:scale-105 border-gray-200 rounded-md p-3 text-center md:flex-1 md:min-w-0 md:w-auto md:border-0 md:p-0 md:rounded-none md:border-l md:border-gray-300"
     >
-      <img
-        src={e.image}
-        alt={`section-${i + 1}`}
-        className="h-[80px] w-[80px] object-contain mb-2"
-      />
-      <span className="text-sm font-medium">{e.name}</span>
-      <span className="text-sm text-red-600 bg-red-100 px-4 py-1 rounded-3xl mt-1">
-        {e.discount}
-      </span>
+      <Link href={`/product/${e.id}`} className="flex flex-col items-center">
+        <img
+          src={e.imageUrl}
+          alt={`section-${i + 1}`}
+          className="h-[80px] w-[80px] object-contain mb-2"
+        />
+        <span className="text-sm font-medium">{e.name}</span>
+        <span className="text-sm text-red-600 bg-red-100 px-4 py-1 rounded-3xl mt-1">
+          {e.discount}%
+        </span>
+      </Link>
     </div>
   ))}
 </div>
+
 
 
 
@@ -154,22 +179,23 @@ let array3 = [
     <h4 className="text-xl font-bold">Home and Outdoor</h4>
   </div>
 
-  <div className="flex overflow-x-auto  border-gray-300  whitespace-nowrap gap-4 mt-4 scrollbar-hide">
-    {array2.map((e, i) => (
-      <div
-        key={i}
-        className="flex-none flex flex-col items-center border w-[150px] min-w-[150px] h-auto transition bg-white hover:z-10 duration-200 hover:scale-105 border-gray-200 rounded-md p-3 text-center"
-      >
-        <img
-          className="h-[80px] w-[80px] object-contain mb-2"
-          src={e.image}
-          alt={e.name}
-        />
-        <span className="text-sm font-medium">{e.name}</span>
-        <span className="text-sm text-gray-600">{e.price}</span>
-      </div>
-    ))}
-  </div>
+
+   <div className="flex overflow-x-auto border-gray-300 whitespace-nowrap gap-4 mt-4 scrollbar-hide">
+      {Home1.map((e, i) => (
+        <Link key={i} href={`/product/${e.id}`} className="flex-none">
+          <div className="flex flex-col items-center border w-[150px] min-w-[150px] h-auto transition bg-white hover:z-10 duration-200 hover:scale-105 border-gray-200 rounded-md p-3 text-center cursor-pointer">
+            <img
+              className="h-[80px] w-[80px] object-contain mb-2"
+              src={e.imageUrl}
+              alt={e.name}
+            />
+            <span className="text-sm font-medium">{e.name}</span>
+            <span className="text-sm text-gray-600">${e.price}</span>
+          </div>
+        </Link>
+      ))}
+    </div>
+
   
  <span className="mt-4">
     <button className="bg-blue-400 text-white px-4 py-2 rounded">
@@ -198,23 +224,25 @@ let array3 = [
   </span>
 
   <div className=" grid grid-cols-4">
-    {array2.map((e, i) => (
+    {Home1.map((e, i) => (
+         <Link key={i} href={`/product/${e.id}`} className="flex-none">
       <div
         key={i}
         className="flex flex-col border w-[268px] h-[120px] transition bg-white hover:z-10 duration-200 hover:scale-110 border-gray-200 text-left px-3 py-2 relative"
       >
         <span className="text-sm font-medium">{e.name}</span>
-        <span className="text-sm text-gray-600">{e.price}</span>
+        <span className="text-sm text-gray-600">${e.price}</span>
 
         <div className="ml-auto mt-auto cursor-pointer">
           <img
             className="h-[62px] w-[62px]"
-            src={e.image}
+            src={e.imageUrl}
             alt={e.name}
           />
         </div>
         
       </div>
+      </Link>
     ))}
   </div>
  
@@ -226,22 +254,25 @@ let array3 = [
   {/* Title */}
   <h4 className="text-lg font-semibold text-black">Consumer Electronics</h4>
 
-  {/* Scrollable cards */}
+  
   <div className="flex overflow-x-auto whitespace-nowrap gap-4 mt-4 scrollbar-hide">
-    {array3.map((e, i) => (
+    {Home2.map((e, i) => (
+        <Link key={i} href={`/product/${e.id}`} className="flex-none">
       <div
         key={i}
         className="flex-none flex flex-col items-center border w-[150px] min-w-[150px] bg-white hover:scale-105 transition duration-200 border-gray-200 rounded-md p-3 text-center"
       >
         <img
           className="h-[80px] w-[80px] object-contain mb-2"
-          src={e.image}
+          src={e.imageUrl}
           alt={e.name}
         />
         <span className="text-sm font-medium text-black">{e.name}</span>
-        <span className="text-sm text-gray-600">{e.price}</span>
+        <span className="text-sm text-gray-600">${e.price}</span>
       </div>
+      </Link>
     ))}
+    
   </div>
 
   {/* Button */}
@@ -276,22 +307,24 @@ let array3 = [
 
 
  <div className="grid  grid-cols-4 ">
-  {array3.map((e, i) => (
+  {Home2.map((e, i) => (
+     <Link key={i} href={`/product/${e.id}`} className="flex-none">
     <div
       key={i}
       className="flex md:flex flex-col   border w-[268px] h-[120px] transition bg-white hover:z-10 duration-200 hover:scale-110 border-gray-200 text-left px-3 py-2 "
     >
       <span className="text-sm  font-medium">{e.name}</span>
-      <span className="text-sm text-gray-600">{e.price}</span>
+      <span className="text-sm text-gray-600">${e.price}</span>
 
       <div className="ml-auto  mt-auto cursor-pointer ">
         <img
           className=" h-[62px] w-[62px]"
-          src={e.image}
+          src={e.imageUrl}
           alt={e.name}
         />
       </div>
     </div>
+    </Link>
   ))}
 </div>
 

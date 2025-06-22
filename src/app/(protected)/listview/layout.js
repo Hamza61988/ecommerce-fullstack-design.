@@ -1,5 +1,5 @@
-import AboutPage from "../components/side";
-import Navbar from "../components/Navbar";
+import AboutPage from "../../components/side";
+import Navbar from "../../components/Navbar";
 
 export const metadata = {
   title: "List View",

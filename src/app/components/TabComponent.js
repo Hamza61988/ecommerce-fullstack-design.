@@ -15,7 +15,7 @@ export default function TabComponent() {
   const renderContent = () => {
     switch (activeTab) {
       case 'description':
-        return <div className="text-gray-700  space-y-6">
+        return <div className="text-gray-700   space-y-6">
   <p className="leading-relaxed">
     Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
     labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
@@ -295,7 +295,7 @@ export default function TabComponent() {
   };
 
   return (
-    <div className="elements shadow-sm font-sans p-5">
+    <div className="elements  rounded shadow-sm font-sans p-5">
  
       <div className="flex gap-6 border-b border-gray-200 mb-4">
         {tabs.map(tab => (
@@ -315,7 +315,7 @@ export default function TabComponent() {
       </div>
 
    
-      <div className="text-gray-700 h-fit w-[1067px] text-base">
+      <div className="text-gray-700  h-fit w-[1067px] text-base">
         {renderContent()}
       </div>
     </div>
