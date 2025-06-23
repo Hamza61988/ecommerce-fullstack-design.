@@ -2,8 +2,8 @@
 import Footer from '../components/footer';
 
 export const metadata = {
-  title: 'My App',
-  description: 'Final Year Project Example',
+  title: "Home Page",
+  description: "Home Page of this project",
 };
 
 export default function DashLayout({ children }) {

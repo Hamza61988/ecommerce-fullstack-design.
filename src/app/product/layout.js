@@ -1,8 +1,8 @@
 import Navbar from "../components/Navbar";
 
 export const metadata = {
-  title: "List View",
-  description: "Example list view page",
+  title: "Product Details",
+  description: "Products details on this page",
 };
 
 export default function Layout({ children }) {

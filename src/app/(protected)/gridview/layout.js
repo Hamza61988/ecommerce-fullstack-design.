@@ -2,7 +2,7 @@ import AboutPage from "../../components/side";
 import Navbar from "../../components/Navbar";
 
 export const metadata = {
-  title: "List View",
+  title: "Grid View",
   description: "Example list view page",
 };
 

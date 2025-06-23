@@ -1,8 +1,8 @@
 
 
 export const metadata = {
-  title: "List View",
-  description: "Example list view page",
+  title: "Cart Page",
+  description: "Cart page of ths project",
 };
 
 export default function Layout({ children }) {

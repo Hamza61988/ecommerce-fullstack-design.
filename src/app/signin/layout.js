@@ -2,7 +2,7 @@ import Navbar from "../components/Navbar";
 
 export const metadata = {
   title: "Sign-in",
-  description: "Example list view page",
+  description: "Sign-in page",
 };
 
 export default function Layout({ children }) {
