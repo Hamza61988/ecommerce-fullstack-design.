@@ -107,7 +107,7 @@ const halfarray = [
 
     
    <div className="mx-4 mt-5 rounded md:mx-[80px]">
-  <div className="relative rounded w-full h-[220px] md:h-[420px] overflow-hidden">
+  <div className="relative  rounded w-full h-[220px] md:h-[420px] overflow-hidden">
     
     <img
       src="middledown.png"
@@ -132,12 +132,12 @@ const halfarray = [
       elit, sed do eiusmod tempor incididunt.
     </p>
 
-<button className="md:hidden absolute bottom-4 left-4 z-10 bg-[#127FFF] text-white font-medium px-4 py-2 rounded shadow">
+<button className="flex md:flex lg:flex xl:hidden  absolute bottom-4 left-4 z-10 bg-[#127FFF] text-white font-medium px-4 py-2 rounded shadow">
   Send inquiry
 </button>
 
 
-    <div className="hidden md:flex flex-col gap-6 rounded w-[491px] h-[360px] absolute p-4 top-10 right-12 bg-white shadow-md">
+    <div className="hidden  md:hidden xl:flex lg:hidden flex-col gap-6 rounded w-[491px] h-[360px] absolute p-4 top-10 right-12 bg-white shadow-md">
       <h3 className="font-semibold text-2xl">Send quote to suppliers</h3>
 
       <div className="border border-gray-400 rounded p-2">
@@ -175,7 +175,7 @@ const halfarray = [
       <div className="  md:text-2xl text-xl font-semibold my-6">
         Recommended items
       </div>
-<div className="md:grid grid grid-cols-2 md:grid-cols-5 gap-4">
+<div className="md:grid xl:grid-cols-5 lg:grid-cols-3 md:grid-cols-2 gap-4">
   {section4.slice(0, 10).map((e) => (
     <Link href={`/product/${e.id}`} key={e.id}>
       <div className="border border-gray-200 rounded-lg p-3 cursor-pointer shadow-sm hover:shadow-md transition flex flex-col items-center">
@@ -194,28 +194,45 @@ const halfarray = [
   ))}
 </div>
 
- <div className=" md:flex hidden text-2xl my-6">
-        Our Extra Services
-      </div>
+{/* Section Title – visible on lg and up */}
+<div className="hidden  lg:hidden xl:flex text-2xl font-semibold my-6">
+  Our Extra Services
+</div>
 
-      <div className="flex  md:flex hidden  justify-between">
-        {halfarray.map((e , i)=>{
-              const Icon = e.icon;
-          return  <div key={i} className="relative shadow-sm   transform transition-transform duration-300 hover:scale-110  hover:z-10">
-            <img className="w-[310px]  h-[200px] object-cover" src={e.image}></img>
-           <span className="bg-white p-1 duration-100 cursor-pointer transition-transform hover:scale-105 rounded-full inline-block absolute top-27 right-4 z-10">
-  <span className="bg-blue-300 p-2 rounded-full inline-block">
-    <Icon className="text-2xl text-white" />
+{/* Grid of Services – visible on lg and up */}
+<div className="hidden lg:hidden xl:flex xl:grid-cols-4 xl:justify-between">
+  {halfarray.map((e, i) => {
+    const Icon = e.icon;
+    return (
+      <div
+        key={i}
+        className="w-[300px] h-[200px] relative shadow-md rounded overflow-hidden transition-transform duration-300 hover:scale-105 hover:z-10"
+      >
+        {/* Image fills the card */}
+        <img
+          className="w-full h-[200px] object-cover"
+          src={e.image}
+          alt={e.title}
+        />
+
+
+<span className="absolute bottom-11 right-4 z-10 rounded-full bg-white p-1 shadow">
+  <span className="flex items-center justify-center w-10 h-10 rounded-full bg-blue-500 transition-transform hover:scale-105">
+    <Icon className="text-white text-xl" />
   </span>
 </span>
 
-            <div className="absolute p-3 bottom-0 h-[70px] w-full elements">
-          
-                <h4>{e.title}</h4>
-            </div>
-          </div>
-        })}
+
+        {/* Title section */}
+        <div className="absolute bottom-0 w-full h-[70px] bg-white bg-opacity-90 px-4 py-2 flex items-center">
+          <h4 className="text-base font-medium text-gray-800">{e.title}</h4>
+        </div>
       </div>
+    );
+  })}
+</div>
+
+
        
         
             <div className="   md:mx-0  md:text-2xl text-xl font-semibold  my-6">

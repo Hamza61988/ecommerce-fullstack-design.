@@ -40,7 +40,7 @@ export default function LoginPage() {
       };
       localStorage.setItem('email', JSON.stringify(emailData));
 
-      alert('Login successful!');
+     setErrorMsg('Login successfull')
       router.push('/dash');
     } catch (error) {
       console.error(error);
@@ -54,7 +54,16 @@ export default function LoginPage() {
         {/* Login Card */}
         <div className="bg-white shadow-md rounded-lg p-8">
           <h2 className="text-3xl font-bold text-blue-600 mb-6 text-center">Welcome Back</h2>
-          {errorMsg && <p className="text-red-500 mb-4 text-center">{errorMsg}</p>}
+         {errorMsg && (
+  <p
+    className={`mb-4 text-center ${
+      errorMsg === "Login successfull" ? "text-green-500" : "text-red-500"
+    }`}
+  >
+    {errorMsg}
+  </p>
+)}
+
 
           <form onSubmit={handleSubmit} className="space-y-4">
             <input

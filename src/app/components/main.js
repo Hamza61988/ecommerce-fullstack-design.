@@ -74,7 +74,7 @@ useEffect(() => {
   return (
     <div className="mx-4 md:mx-[80px] relative">
       <div className="elements md:rounded flex flex-row justify-center md:shadow-sm md:p-4 py-2 gap-4 md:my-4">
-        <div className="gap-1 flex hidden md:flex flex-col">
+        <div className="gap-1 flex hidden xl:flex md:hidden lg:hidden flex-col">
           {array.map((e, i) => (
             <div
               className="py-2 px-4 w-55 rounded hover:bg-[#E5F1FF] cursor-pointer"
@@ -85,7 +85,7 @@ useEffect(() => {
           ))}
         </div>
 
-        <div className="lg:flex md:hidden flex relative">
+        <div className="lg:flex  flex relative">
           <img
             src="main.png"
             alt="Main"
@@ -135,7 +135,7 @@ useEffect(() => {
               </div>
             </div>
           )  : (
- <div className="logindiv bg-gradient-to-r from-blue-500 to-indigo-600 rounded-lg text-white p-6 w-[250px] flex flex-col justify-center items-start h-auto">
+ <div className="logindiv bg-gradient-to-r from-blue-500 to-indigo-600 rounded-lg text-white p-6 w-[250px] h-[177px] flex flex-col justify-center items-start ">
 
     <h2 className="text-lg font-semibold mb-1">
       Welcome, <strong>{userEmail.value.split("@")[0]}</strong>

@@ -238,39 +238,43 @@ export default function Navbar({ onToggleSidebar }) {
       </header>
 
       {/* Desktop Bottom Bar */}
-      <div className="jody hidden md:flex items-center py-4 justify-between">
-        <div className="flex gap-4 items-center">
-          <span className="flex items-center">
-            <GiHamburgerMenu />
-            <select className="cursor-pointer appearance-none outline-none ml-2">
-              <option value="">All Categories</option>
-              <option value="tv">TV</option>
-              <option value="sofa">Sofa</option>
-            </select>
-          </span>
-          <button className="cursor-pointer">Hot Offers</button>
-          <button className="cursor-pointer">Gift Boxes</button>
-          <button className="cursor-pointer">Projects</button>
-          <button className="cursor-pointer">Menu Items</button>
-          <select className="py-2 appearance-none cursor-pointer outline-none">
-            <option value="">Help</option>
-            <option value="tv">TV</option>
-            <option value="sofa">Sofa</option>
-          </select>
-        </div>
-        <div className="flex gap-4">
-          <select className="cursor-pointer appearance-none outline-none">
-            <option value="">English, USD</option>
-            <option value="siraiki">Siraiki</option>
-            <option value="chinese">Chinese</option>
-          </select>
-          <select className="transition cursor-pointer appearance-none outline-none">
-            <option value="">Ship to United States</option>
-            <option value="uk">UK</option>
-            <option value="india">INDIA</option>
-          </select>
-        </div>
-      </div>
+  <div className="jody hidden lg:flex items-center py-4 justify-between">
+  {/* Left side options */}
+  <div className="flex gap-4 truncate items-center">
+    <span className="flex truncate items-center">
+      <GiHamburgerMenu />
+      <select className="cursor-pointer p-2 appearance-none outline-none ml-2">
+        <option value="">All Categories</option>
+        <option value="tv">TV</option>
+        <option value="sofa">Sofa</option>
+      </select>
+    </span>
+    <button className="cursor-pointer">Hot Offers</button>
+    <button className="cursor-pointer">Gift Boxes</button>
+    <button className="cursor-pointer">Projects</button>
+    <button className="cursor-pointer">Menu Items</button>
+    <select className=" p-2 appearance-none cursor-pointer outline-none">
+      <option value="">Help</option>
+      <option value="tv">TV</option>
+      <option value="sofa">Sofa</option>
+    </select>
+  </div>
+
+  {/* Right side options */}
+  <div className="flex gap-4">
+    <select className="cursor-pointer p-1 appearance-none outline-none">
+      <option value="">English, USD</option>
+      <option value="siraiki">Siraiki</option>
+      <option value="chinese">Chinese</option>
+    </select>
+    <select className="transition p-2 cursor-pointer appearance-none outline-none">
+      <option value="">Ship to United States</option>
+      <option value="uk">UK</option>
+      <option value="india">India</option>
+    </select>
+  </div>
+</div>
+
 
       <hr className="cursor-pointer shadow-sm text-gray-300" />
     </div>

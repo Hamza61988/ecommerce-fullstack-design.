@@ -101,10 +101,10 @@ useEffect(() => {
     <div className=" mx-4 md:mx-[80px] ">
 
 
-        <div className="elements rounded   md:h-[240px] md:flex  md:flex-row flex-col  p-4 mt-4 h-fill shadow-sm">
+        <div className="elements rounded md:h-[240px] md:flex  md:flex-row flex-col  p-4 mt-4 h-fill shadow-sm">
             
                               
-                  <span className="flex md:justify-center justify-between md:gap-0 gap-4  items-center  md:flex-col">
+                  <span className="flex md:justify-center  xl:flex lg:hidden md:hidden  justify-between md:gap-0 gap-4  items-center  md:flex-col">
                   <span >
                   <h4 className="md:text-xl font-bold text-sm ">Deals and offers</h4>
                   <p className="md:hidden flex text-sm">Electronic equipments</p>
@@ -146,7 +146,7 @@ useEffect(() => {
         <img
           src={e.imageUrl}
           alt={`section-${i + 1}`}
-          className="h-[80px] w-[80px] object-contain mb-2"
+          className="h-[80px]  w-[80px] object-contain mb-2"
         />
         <span className="text-sm font-medium">{e.name}</span>
         <span className="text-sm text-red-600 bg-red-100 px-4 py-1 rounded-3xl mt-1">
@@ -174,7 +174,7 @@ useEffect(() => {
      
 
   {/* only on mobile */}
-<div className="flex md:hidden elements flex-col mt-5 rounded shadow-sm   p-4">
+<div className="flex md:hidden elements rounded flex-col mt-5 rounded shadow-sm   p-4">
   <div>
     <h4 className="text-xl font-bold">Home and Outdoor</h4>
   </div>
@@ -207,46 +207,36 @@ useEffect(() => {
 
 
 
-<div className="hidden md:flex h-[240px] mt-4 shadow-sm relative">
-  <div className="relative hidden md:flex ">
-    <img
-      src="main2.jpg"
-      alt="Flipped image"
-      className="top-0 left-10 w-[298px] h-[240px] scale-x-[-1] opacity-80"
-    />
-  </div>
+    <div className="elements hidden md:flex flex-col lg:flex-row w-full shadow-sm rounded overflow-hidden mt-4">
+          <div className="hidden lg:flex w-[298px] h-[240px] relative">
+            <img
+              src="main2.jpg"
+              alt="Home"
+              className="w-full h-full object-cover scale-x-[-1] opacity-80"
+            />
+            <div className="absolute top-4 left-4 text-black">
+              <h4 className="text-lg font-semibold">Home and Outdoor</h4>
+              <button className="mt-2 bg-white text-black px-4 py-1 rounded shadow">Source now</button>
+            </div>
+          </div>
 
-  <span className="absolute top-4 left-6 text-white">
-    <h4 className="text-lg text-black">Home and <br /> Outdoor</h4>
-    <button className="mt-2 cursor-pointer bg-white text-black px-2 py-1 rounded">
-      Source now
-    </button>
-  </span>
-
-  <div className=" grid grid-cols-4">
-    {Home1.map((e, i) => (
-         <Link key={i} href={`/product/${e.id}`} className="flex-none">
-      <div
-        key={i}
-        className="flex flex-col border w-[268px] h-[120px] transition bg-white hover:z-10 duration-200 hover:scale-110 border-gray-200 text-left px-3 py-2 relative"
-      >
-        <span className="text-sm font-medium">{e.name}</span>
-        <span className="text-sm text-gray-600">${e.price}</span>
-
-        <div className="ml-auto mt-auto cursor-pointer">
-          <img
-            className="h-[62px] w-[62px]"
-            src={e.imageUrl}
-            alt={e.name}
-          />
+          <div className="grid grid-cols-4 w-full">
+            {Home1.map((e, i) => (
+              <Link key={i} href={`/product/${e.id}`} className="flex-none">
+                <div className="flex rounded border flex-col border-l border-gray-200 w-full h-[120px] transition bg-white hover:z-10 duration-200 hover:scale-105 px-3 py-2">
+                  <span className="text-sm font-medium">{e.name}</span>
+                  <span className="text-sm text-gray-600">${e.price}</span>
+                  <div className="ml-auto mt-auto">
+                    <img className="h-[62px] w-[62px] object-contain" src={e.imageUrl} alt={e.name} />
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
         </div>
-        
-      </div>
-      </Link>
-    ))}
-  </div>
+
  
-</div>
+
 
 
 {/* Mobile only section: Consumer Electronics */}
@@ -286,51 +276,36 @@ useEffect(() => {
 
 
 {/* 3 section */}
-  <div className="elements hidden md:flex flex-col md:flex-row md:flex h-full mt-4 shadow-sm relative">
-  
-  <div className="relative hidden md:flex  ">
-    <img
-      src="section3.png"
-      alt="Flipped image"
-      className=" top-0 object-cover w-[298px] h-[240px]  opacity-80"
-    />
-  </div>
+    <div className="elements md:flex hidden  flex-col lg:flex-row w-full shadow-sm rounded overflow-hidden mt-4">
+          <div className="hidden  lg:flex w-[298px] h-[240px] relative">
+            <img
+              src="section3.png"
+              alt="Gadgets"
+              className="w-full h-full object-cover opacity-80"
+            />
+            <div className="absolute top-4 left-4 text-black">
+              <h4 className="text-lg font-semibold">Consumer Electronics</h4>
+              <button className="mt-2 bg-white text-black px-4 py-1 rounded shadow">Source now</button>
+            </div>
+          </div>
 
-
-  <span className="relative md:absolute  md:top-4 md:left-6 text-white">
-    <h4 className="text-lg md:flex hidden text-black ">Consumer electronics <br></br>and gadgets</h4>
-     <h4 className="text-lg text-xl flex md:hidden p-4 font-semibold text-black ">Consumer electronics </h4>
-    <button className="mt-2 md:flex hidden bg-white text-black  px-4 py-1 cursor-pointer  rounded">
-      Source now
-    </button>
-  </span>
-
-
- <div className="grid  grid-cols-4 ">
-  {Home2.map((e, i) => (
-     <Link key={i} href={`/product/${e.id}`} className="flex-none">
-    <div
-      key={i}
-      className="flex md:flex flex-col   border w-[268px] h-[120px] transition bg-white hover:z-10 duration-200 hover:scale-110 border-gray-200 text-left px-3 py-2 "
-    >
-      <span className="text-sm  font-medium">{e.name}</span>
-      <span className="text-sm text-gray-600">${e.price}</span>
-
-      <div className="ml-auto  mt-auto cursor-pointer ">
-        <img
-          className=" h-[62px] w-[62px]"
-          src={e.imageUrl}
-          alt={e.name}
-        />
+          <div className="grid grid-cols-4 w-full">
+            {Home2.map((e, i) => (
+              <Link key={i} href={`/product/${e.id}`} className="flex-none">
+                <div className="flex border rounded flex-col border-l border-gray-200 w-full h-[120px] transition bg-white hover:z-10 duration-200 hover:scale-105 px-3 py-2">
+                  <span className="text-sm font-medium">{e.name}</span>
+                  <span className="text-sm text-gray-600">${e.price}</span>
+                  <div className="ml-auto mt-auto">
+                    <img className="h-[62px] w-[62px] object-contain" src={e.imageUrl} alt={e.name} />
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
       </div>
-    </div>
-    </Link>
-  ))}
-</div>
 
- </div>
-
-    </div>
+   
   )
     
   
